@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FA;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui_v1.Patient.PatientEventHandlers">
+
+    <!-- Sidebar -->
+    <left>
+        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-background-color: #FFFFFF; -fx-padding: 20; -fx-pref-width: 220;">
+            <!-- User Profile -->
+            <VBox alignment="CENTER" spacing="10">
+                <ImageView fitHeight="100" fitWidth="100" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../img/patient.png" />
+                    </image>
+                </ImageView>
+                <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Leo Messi" />
+            </VBox>
+
+            <!-- Navigation -->
+            <VBox alignment="CENTER_LEFT" spacing="10">
+                <Button style="-fx-background-color: #EAF3FF; -fx-text-fill: #3076F1; -fx-pref-width: 200;" text="My Dashboard" />
+                <Button style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Appointments" />
+            <Button layoutX="10.0" layoutY="46.0" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Prescriptions" />
+                <Button style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Bills" />
+
+                <!-- Tools Section -->
+                <Separator />
+                <Button style="-fx-background-color: transparent; -fx-text-fill: #FF6B5C; -fx-pref-width: 200;" text="Log Out" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Main Content Area -->
+    <center>
+        <VBox alignment="TOP_LEFT" spacing="10.0" style="-fx-padding: 20;">
+            <!-- Dashboard Header -->
+            <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #333333;" text="My Dashboard" />
+
+            <!-- Info -->
+            <HBox spacing="20">
+                <VBox prefHeight="176.0" prefWidth="230.0" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20;">
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="NEXT APPOINTMENT" />
+                    <VBox alignment="CENTER" spacing="10.0">
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../../img/doctor.png" />
+                                </image>
+                            </ImageView>
+                            <VBox alignment="CENTER_LEFT">
+                                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Dr.Barney stinson" />
+                                <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="25 Dec 2024, 10:00 AM" />
+                            </VBox>
+                        </HBox>
+                        <Button style="-fx-background-color: #3076F1; -fx-text-fill: white; -fx-background-radius: 5;" text="VIEW DETAILS" />
+                    </VBox>
+                </VBox>
+
+                <VBox prefHeight="176.0" prefWidth="210.0" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20;">
+                    <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333333;" text="PENDING BILLS" />
+                    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #3076F1;" text="\$200" />
+                </VBox>
+
+                <VBox prefHeight="176.0" prefWidth="210.0" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20;">
+                    <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333333;" text="TOTAL APPOINTMENTS" />
+                    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #3076F1;" text="15" />
+                </VBox>
+            </HBox>
+
+            <!-- Recent Activity Section -->
+            <VBox spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20;">
+                <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="RECENT ACTIVITY" />
+                <HBox alignment="CENTER_LEFT" spacing="20">
+                    <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../../img/doctor.png" />
+                        </image>
+                    </ImageView>
+                    <VBox>
+                        <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Follow-up with Dr.Barney stinson" />
+                        <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Completed on 20 Dec 2024" />
+                    </VBox>
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #E5F0FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui_v1.HelloController">
+    <!-- Left Section -->
+    <left>
+        <VBox alignment="CENTER" prefWidth="500.0" spacing="20" style="-fx-background-color: #FFFFFF; -fx-padding: 0;">
+            <children>
+                <ImageView fitHeight="500" fitWidth="500" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../img/Login.png" />
+                    </image>
+                    <rotationAxis>
+                        <Point3D />
+                    </rotationAxis>
+                </ImageView>
+            </children>
+        </VBox>
+    </left>
+
+    <!-- Right Section -->
+    <center>
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 50; -fx-background-color: #f4f5f7;">
+            <!-- Logo -->
+            <Label style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Masters" />
+
+            <!-- Username Field -->
+            <TextField fx:id="usernameField" promptText="Name" style="-fx-pref-width: 300; -fx-background-radius: 5; -fx-border-color: #E0E0E0; -fx-padding: 10;" />
+
+            <!-- Password Field -->
+            <PasswordField fx:id="passwordField" promptText="Password" style="-fx-pref-width: 300; -fx-background-radius: 5; -fx-border-color: #E0E0E0; -fx-padding: 10;" />
+         <PasswordField fx:id="passwordField1" layoutX="60.0" layoutY="215.0" promptText="ContactInfo" style="-fx-pref-width: 300; -fx-background-radius: 5; -fx-border-color: #E0E0E0; -fx-padding: 10;" />
+            <Label fx:id="errorMessage" style="-fx-font-size: 14; -fx-text-fill: #FF6B5C; -fx-visibility: hidden;" text="The username or password is incorrect" />
+
+            <!-- Login Button -->
+            <Button style="-fx-background-color: linear-gradient(to right, #3076F1, #45A7F5); -fx-text-fill: #FFFFFF; -fx-background-radius: 5; -fx-pref-width: 300; -fx-pref-height: 40;" text="Sign Up" />
+         <Hyperlink onAction="#AlreadyHaveAccButton" text="Already have and account?Login" />
+        </VBox>
+    </center>
+</BorderPane>

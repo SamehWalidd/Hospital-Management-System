@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FA;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui_v1.Doctor.DoctorEventHandlers">
+
+    <!-- Sidebar -->
+    <left>
+        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-background-color: #FFFFFF; -fx-padding: 20; -fx-pref-width: 220;">
+            <!-- User Profile -->
+            <VBox alignment="CENTER" spacing="10">
+                <ImageView fitHeight="100" fitWidth="100" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../img/doctor.png" />
+                    </image>
+                </ImageView>
+                <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Dr.Barney Stinson" />
+            </VBox>
+
+            <!-- Navigation -->
+            <VBox alignment="CENTER_LEFT" spacing="10">
+                <Button onAction="#dashboardButton" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="Dashboard" />
+                <Button style="-fx-background-color: EAF3FF; -fx-text-fill: #3076F1; -fx-pref-width: 200;" text="Prescriptions" />
+                <Button onAction="#appointmentsButton" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Appointments" />
+                <Separator />
+                <Button onAction="#logoutButton" style="-fx-background-color: transparent; -fx-text-fill: #FF6B5C; -fx-pref-width: 200;" text="Log Out" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Main Content Area -->
+    <center>
+        <VBox alignment="TOP_LEFT" spacing="20" style="-fx-padding: 20;" VBox.vgrow="ALWAYS">
+            <!-- Header -->
+            <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #333333;" text="PATIENTS" />
+
+            <!-- Search Bar -->
+            <HBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
+                <TextField promptText="Search..." style="-fx-background-radius: 5; -fx-border-color: #E0E0E0;" HBox.hgrow="ALWAYS" />
+                <Button style="-fx-background-color: #3076F1; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="SEARCH" />
+            </HBox>
+
+            <!-- Patient Cards -->
+            <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="4 SEARCH RESULTS FOUND" />
+            <HBox alignment="CENTER_LEFT" prefHeight="229.0" prefWidth="740.0" spacing="20">
+                <VBox spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20; -fx-pref-width: 200; -fx-alignment: center;">
+                    <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../../img/patient.png" />
+                        </image>
+                    </ImageView>
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Mohamed" />
+                    <Button style="-fx-background-color: #28A745; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="PRESCRIPTIONS" />
+                </VBox>
+                <VBox spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20; -fx-pref-width: 200; -fx-alignment: center;">
+                    <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../../img/patient.png" />
+                        </image>
+                    </ImageView>
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Sameh" />
+                    <Button style="-fx-background-color: #28A745; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="PRESCRIPTIONS" />
+                </VBox>
+                <VBox spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20; -fx-pref-width: 200; -fx-alignment: center;">
+                    <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../../img/patient.png" />
+                        </image>
+                    </ImageView>
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Farah" />
+                    <Button style="-fx-background-color: #28A745; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="PRESCRIPTIONS" />
+                </VBox>
+                <VBox spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20; -fx-pref-width: 200; -fx-alignment: center;">
+                    <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../../img/patient.png" />
+                        </image>
+                    </ImageView>
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Ismail" />
+                    <Button style="-fx-background-color: #28A745; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="PRESCRIPTIONS" />
+                </VBox>
+            </HBox>
+            <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                <Button maxWidth="Infinity" onAction="#NewPrescriptionButton" prefHeight="42.0" prefWidth="714.0" style="-fx-background-color: #3076F1; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="CREATE NEW PRESCRIPTION" />
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>
