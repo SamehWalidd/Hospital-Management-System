@@ -1,6 +1,7 @@
 package base;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import static databaseConfig.DatabaseConfig.*;
 
@@ -66,6 +67,131 @@ public class Doctor {
         return specialty;
     }
 
+    public String getMostRecentAppointmentDate() {
+        String date = null;
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT a.date_time FROM Appointment a " +
+                    "WHERE a.doctor_id = ? AND a.date_time <= NOW() ORDER BY a.date_time DESC LIMIT 1";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, this.id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                date = resultSet.getString("date_time");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return date;
+    }
+    public String getMostRecentAppointmentPatientName() {
+        String patientName = null;
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT p.name FROM Appointment a " +
+                    "JOIN Patient p ON a.patient_id = p.id " +
+                    "WHERE a.doctor_id = ? AND a.date_time <= NOW() ORDER BY a.date_time DESC LIMIT 1";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, this.id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                patientName = resultSet.getString("name");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return patientName;
+    }
+    public String getNextAppointmentDate() {
+        String date = null;
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT a.date_time FROM Appointment a " +
+                    "WHERE a.doctor_id = ? AND a.date_time > NOW() ORDER BY a.date_time ASC LIMIT 1";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, this.id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                date = resultSet.getString("date_time");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return date;
+    }
+
+    public String getNextAppointmentPatientName() {
+        String patientName = null;
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT p.name FROM Appointment a " +
+                    "JOIN Patient p ON a.patient_id = p.id " +
+                    "WHERE a.doctor_id = ? AND a.date_time > NOW() ORDER BY a.date_time ASC LIMIT 1";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, this.id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                patientName = resultSet.getString("name");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return patientName;
+    }
+
+    public int getPendingAppointments() {
+        int count = 0;
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT COUNT(*) AS count FROM Appointment a " +
+                    "WHERE a.doctor_id = ? AND a.date_time > NOW()";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, this.id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                count = resultSet.getInt("count");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
+
+    public int getTotalAppointments() {
+        int count = 0;
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT COUNT(*) AS count FROM Appointment a " +
+                    "WHERE a.doctor_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, this.id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                count = resultSet.getInt("count");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
+
+
+    public ArrayList<Appointment> getUpcomingAppointments(){
+        ArrayList<Appointment> appointments = new ArrayList<>();
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT a.id, a.date_time, p.id AS patient_id, p.name AS patient_name FROM Appointment a " +
+                    "JOIN Patient p ON a.patient_id = p.id " +
+                    "WHERE a.doctor_id = ? AND a.date_time > NOW() ORDER BY a.date_time ASC";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, this.id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int appointmentId = resultSet.getInt("id");
+                Timestamp dateTime = resultSet.getTimestamp("date_time");
+                int patientId = resultSet.getInt("patient_id");
+                Patient patient = new Patient(patientId);
+                appointments.add(new Appointment(appointmentId, this, patient, dateTime.toLocalDateTime()));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return appointments;
+    }
+
     public void assignAppointment(Appointment appointment) {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             String query = "INSERT INTO Appointment (doctor_id, patient_id, date_time) VALUES (?, ?, ?)";
@@ -106,4 +232,21 @@ public class Doctor {
             throw new RuntimeException(e);
         }
     }
+    public ArrayList<Patient> getPatients() {
+        ArrayList<Patient> Patientss = new ArrayList<>();
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT DISTINCT patient_id FROM Appointment WHERE doctor_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, this.id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Patientss.add(new Patient(resultSet.getInt("patient_id")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return Patientss;
+    }
+
+
 }

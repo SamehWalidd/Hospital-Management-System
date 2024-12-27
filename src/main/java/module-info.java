@@ -4,6 +4,7 @@ module com.example.gui_v1 {
     requires javafx.graphics;
     requires java.sql;
     requires java.desktop;
+    requires protobuf.java;
 
     opens com.example.gui_v1 to javafx.fxml;
     opens com.example.gui_v1.Doctor to javafx.fxml;

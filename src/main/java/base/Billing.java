@@ -41,11 +41,15 @@ public class Billing {
         return invoice.toString();
     }
 
+    public ArrayList<String> getServices() {
+        return services;
+    }
+
     private void loadBillingFromDatabase() {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            String query = "SELECT service, cost FROM Billing WHERE id = ?";
+            String query = "SELECT service, cost FROM Billing WHERE patient_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, this.id);
+            preparedStatement.setInt(1, this.patient.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -72,3 +76,4 @@ public class Billing {
         }
     }
 }
+

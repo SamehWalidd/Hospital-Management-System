@@ -33,11 +33,11 @@
 
             <!-- Password Field -->
             <PasswordField fx:id="passwordField" promptText="Password" style="-fx-pref-width: 300; -fx-background-radius: 5; -fx-border-color: #E0E0E0; -fx-padding: 10;" />
-         <PasswordField fx:id="passwordField1" layoutX="60.0" layoutY="215.0" promptText="ContactInfo" style="-fx-pref-width: 300; -fx-background-radius: 5; -fx-border-color: #E0E0E0; -fx-padding: 10;" />
-            <Label fx:id="errorMessage" style="-fx-font-size: 14; -fx-text-fill: #FF6B5C; -fx-visibility: hidden;" text="The username or password is incorrect" />
+            <TextField fx:id="contactInfoField" layoutX="60.0" layoutY="215.0" promptText="ContactInfo" style="-fx-pref-width: 300; -fx-background-radius: 5; -fx-border-color: #E0E0E0; -fx-padding: 10;" />
+            <Label fx:id="errorMessage" style="-fx-font-size: 14; -fx-text-fill: #FF6B5C; -fx-visibility: hidden;" />
 
             <!-- Login Button -->
-            <Button style="-fx-background-color: linear-gradient(to right, #3076F1, #45A7F5); -fx-text-fill: #FFFFFF; -fx-background-radius: 5; -fx-pref-width: 300; -fx-pref-height: 40;" text="Sign Up" />
+            <Button onAction="#signupButton" style="-fx-background-color: linear-gradient(to right, #3076F1, #45A7F5); -fx-text-fill: #FFFFFF; -fx-background-radius: 5; -fx-pref-width: 300; -fx-pref-height: 40;" text="Sign Up" />
          <Hyperlink onAction="#AlreadyHaveAccButton" text="Already have and account?Login" />
         </VBox>
     </center>

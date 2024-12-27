@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FA;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui_v1.Doctor.DoctorEventHandlers">
+<BorderPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FA;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui_v1.Doctor.Appointments">
 
     <!-- Sidebar -->
     <left>
@@ -16,7 +16,7 @@
                         <Image url="@../../../../img/doctor.png" />
                     </image>
                 </ImageView>
-                <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Dr. Barney Stinson" />
+                <Label fx:id="activeUserName" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Dr. Barney Stinson" />
             </VBox>
 
             <!-- Navigation -->
@@ -40,14 +40,14 @@
 
             <!-- Search Bar -->
             <HBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
-                <TextField promptText="Enter Patient Name or ID" style="-fx-background-radius: 5; -fx-border-color: #E0E0E0;" HBox.hgrow="ALWAYS" />
-                <Button style="-fx-background-color: #3076F1; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="SEARCH" />
+                <TextField fx:id="searchbar" promptText="Enter Patient Name or ID" style="-fx-background-radius: 5; -fx-border-color: #E0E0E0;" HBox.hgrow="ALWAYS" />
+                <Button fx:id="searchButton" onAction="#searchButtonClick" style="-fx-background-color: #3076F1; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="SEARCH" />
             </HBox>
 
             <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="UPCOMING APPOINTMENTS" />
 
             <!-- Appointments List -->
-            <VBox alignment="CENTER" prefWidth="450.0" spacing="10">
+            <VBox fx:id="upcomingVbox" alignment="CENTER" prefWidth="450.0" spacing="10">
                  <!-- Appointment Card 1 -->
                  <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 15; -fx-pref-width: 100%;">
                      <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">

@@ -16,19 +16,19 @@
                         <Image url="@../../../../img/patient.png" />
                     </image>
                 </ImageView>
-                <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Leo Messi" />
+                <Label fx:id="activeUserName" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Leo Messi" />
             </VBox>
 
             <!-- Navigation -->
             <VBox alignment="CENTER_LEFT" spacing="10">
                 <Button style="-fx-background-color: #EAF3FF; -fx-text-fill: #3076F1; -fx-pref-width: 200;" text="My Dashboard" />
-                <Button style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Appointments" />
-            <Button layoutX="10.0" layoutY="46.0" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Prescriptions" />
-                <Button style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Bills" />
+                <Button onAction="#handleViewAppointmentsButton" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Appointments" />
+            <Button layoutX="10.0" layoutY="46.0" onAction="#handleViewPrescriptionButton" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Prescriptions" />
+                <Button onAction="#handleViewBillsButton" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Bills" />
 
                 <!-- Tools Section -->
                 <Separator />
-                <Button style="-fx-background-color: transparent; -fx-text-fill: #FF6B5C; -fx-pref-width: 200;" text="Log Out" />
+                <Button onAction="#handleLogoutButton" style="-fx-background-color: transparent; -fx-text-fill: #FF6B5C; -fx-pref-width: 200;" text="Log Out" />
             </VBox>
         </VBox>
     </left>
@@ -42,31 +42,30 @@
             <!-- Info -->
             <HBox spacing="20">
                 <VBox prefHeight="176.0" prefWidth="230.0" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20;">
-                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="NEXT APPOINTMENT" />
+                    <Label fx:id="noUpcoming" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="NEXT APPOINTMENT" />
                     <VBox alignment="CENTER" spacing="10.0">
                         <HBox alignment="CENTER_LEFT" spacing="10.0">
-                            <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">
+                            <ImageView fx:id="nextImage" fitHeight="50" fitWidth="50" preserveRatio="true">
                                 <image>
                                     <Image url="@../../../../img/doctor.png" />
                                 </image>
                             </ImageView>
                             <VBox alignment="CENTER_LEFT">
-                                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Dr.Barney stinson" />
-                                <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="25 Dec 2024, 10:00 AM" />
+                                <Label fx:id="nextName" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Dr.Barney stinson" />
+                                <Label fx:id="nextDate" style="-fx-font-size: 12; -fx-text-fill: #555555;" text="25 Dec 2024, 10:00 AM" />
                             </VBox>
                         </HBox>
-                        <Button style="-fx-background-color: #3076F1; -fx-text-fill: white; -fx-background-radius: 5;" text="VIEW DETAILS" />
                     </VBox>
                 </VBox>
 
                 <VBox prefHeight="176.0" prefWidth="210.0" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20;">
-                    <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333333;" text="PENDING BILLS" />
-                    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #3076F1;" text="\$200" />
+                    <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333333;" text="TOTAL INVOICE" />
+                    <Label fx:id="pendingField" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #3076F1;" text="\$200" />
                 </VBox>
 
                 <VBox prefHeight="176.0" prefWidth="210.0" spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20;">
                     <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333333;" text="TOTAL APPOINTMENTS" />
-                    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #3076F1;" text="15" />
+                    <Label fx:id="totalAppField" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #3076F1;" text="15" />
                 </VBox>
             </HBox>
 
@@ -80,8 +79,8 @@
                         </image>
                     </ImageView>
                     <VBox>
-                        <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Follow-up with Dr.Barney stinson" />
-                        <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Completed on 20 Dec 2024" />
+                        <Label fx:id="recentName" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Follow-up with Dr.Barney stinson" />
+                        <Label fx:id="recentDate" style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Completed on 20 Dec 2024" />
                     </VBox>
                 </HBox>
             </VBox>

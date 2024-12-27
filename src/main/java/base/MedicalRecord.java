@@ -12,6 +12,11 @@ public class MedicalRecord {
         this.history = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
     }
+    public MedicalRecord(Patient patient) {
+        this.history = new ArrayList<>();
+        this.prescriptions = new ArrayList<>();
+        loadMedicalRecordFromDatabase(patient.getId());
+    }
 
     public void addHistory(String record) {
         history.add(record);

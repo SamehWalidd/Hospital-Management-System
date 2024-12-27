@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FA;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui_v1.HelloController">
+<BorderPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FA;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui_v1.Patient.CreateAppointment">
 
     <!-- Sidebar -->
     <left>
@@ -16,7 +16,7 @@
                         <Image url="@../../../../img/patient.png" />
                     </image>
                 </ImageView>
-                <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Leo Messi" />
+                <Label fx:id="activeUserName" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Leo Messi" />
             </VBox>
 
             <!-- Navigation -->
@@ -41,47 +41,19 @@
         <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #333333;" text="APPOINTMENTS" />
         <HBox alignment="TOP_CENTER" prefHeight="26.0" prefWidth="740.0" spacing="10.0">
             <children>
-                <Button style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="Upcoming" />
-                <Button layoutX="10.0" layoutY="10.0" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="Past" />
+                <Button onAction="#UpcomingAppointmentsButton" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="Upcoming" />
+                <Button layoutX="10.0" layoutY="10.0" onAction="#PastAppointments" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="Past" />
                 <Button style="-fx-background-color: #EAF3FF; -fx-text-fill: #3076F1; -fx-pref-width: 200;" text="Create" />
             </children>
         </HBox>
 
         <!-- Search Bar -->
         <HBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
-            <TextField promptText="Enter Doctor Name" style="-fx-background-radius: 5; -fx-border-color: #E0E0E0;" HBox.hgrow="ALWAYS" />
-            <Button style="-fx-background-color: #3076F1; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="SEARCH" />
+            <TextField fx:id="searchBar" promptText="Enter Doctor Name" style="-fx-background-radius: 5; -fx-border-color: #E0E0E0;" HBox.hgrow="ALWAYS" />
+            <Button onAction="#handleSearchButton" style="-fx-background-color: #3076F1; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="SEARCH" />
         </HBox>
-            <DatePicker prefWidth="260.0" promptText="Select Date" style="-fx-pref-height: 40;" />
-                <HBox alignment="CENTER_LEFT" prefHeight="229.0" prefWidth="740.0" spacing="20">
-                <VBox spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20; -fx-pref-width: 200; -fx-alignment: center;">
-                    <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
-                        <image>
-                            <Image url="@../../../../img/doctor.png" />
-                        </image>
-                    </ImageView>
-                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Mohamed" />
-                    <Button style="-fx-background-color: #28A745; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="Create Appointment" />
-                </VBox>
-                <VBox spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20; -fx-pref-width: 200; -fx-alignment: center;">
-                    <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
-                        <image>
-                            <Image url="@../../../../img/doctor.png" />
-                        </image>
-                    </ImageView>
-                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Sameh" />
-                    <Button style="-fx-background-color: #28A745; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="Create Appointment" />
-                </VBox>
-                <VBox spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20; -fx-pref-width: 200; -fx-alignment: center;">
-                    <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
-                        <image>
-                            <Image url="@../../../../img/doctor.png" />
-                        </image>
-                    </ImageView>
-                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Farah" />
-                    <Button style="-fx-background-color: #28A745; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="Create Appointment" />
-                </VBox>
-                </HBox>
+            <DatePicker fx:id="datePicker" prefWidth="260.0" promptText="Select Date" style="-fx-pref-height: 40;" />
+         <HBox fx:id="AppointmentsHbox" prefHeight="252.0" prefWidth="740.0" />
         </VBox>
     </center>
 
