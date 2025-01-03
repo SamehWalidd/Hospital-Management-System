@@ -91,8 +91,23 @@ public class HelloController {
         }
     }
 
-    
-        @FXML
+    int lastId;
+    private void GetPatientLastID() {
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT MAX(id) AS last_id FROM login WHERE role = 'Patient'";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                lastId= resultSet.getInt("last_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
     private void signupButton(ActionEvent event) throws IOException {
         String user = usernameField.getText();
         String pass = passwordField.getText();
@@ -102,39 +117,31 @@ public class HelloController {
             errorMessage.setText("All fields are required.");
             return;
         }
+        GetPatientLastID();
+        try(Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "INSERT INTO login (id, password, role) VALUES (?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, lastId + 1);
+            preparedStatement.setString(2, pass);
+            preparedStatement.setString(3, "Patient");
+            preparedStatement.executeUpdate();
 
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            String insertLoginQuery = "INSERT INTO login (password, role) VALUES (?, ?)";
-            PreparedStatement loginStatement = connection.prepareStatement(insertLoginQuery, Statement.RETURN_GENERATED_KEYS);
-            loginStatement.setString(1, pass);
-            loginStatement.setString(2, "Patient");
-            int affectedRows = loginStatement.executeUpdate();
+            query = "INSERT INTO patient (id, name,contact_info) VALUES (?, ? ,?)";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, lastId + 1);
+            preparedStatement.setString(2, user);
+            preparedStatement.setString(3, contactInfo);
+            preparedStatement.executeUpdate();
 
-            if (affectedRows == 0) {
-                throw new SQLException("Creating user failed, no rows affected.");
-            }
 
-            try (ResultSet generatedKeys = loginStatement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    activeId = generatedKeys.getInt(1);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Account Created");
+            alert.setHeaderText(null);
+            alert.setContentText("Account created successfully. Your ID is: " + (lastId + 1));
+            alert.showAndWait();
 
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Account Created");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Your user ID is: " + activeId);
-                    alert.showAndWait();
-        
-                    Patient patient = new Patient(user, contactInfo);
 
-                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/gui_v1/LoginScreen.fxml")));
-                    Scene scene = new Scene(root, 1000, 500);
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(scene);
-                    stage.show();   
-                } else {
-                    throw new SQLException("Creating user failed, no ID obtained.");
-                }
-            }
+            errorMessage.setText("Account created successfully.");
         } catch (SQLException e) {
             e.printStackTrace();
             errorMessage.setText("Database error.");

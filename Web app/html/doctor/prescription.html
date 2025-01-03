@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescriptions</title>
+    <link rel="stylesheet" href="/css/Doctor/prescription.css">
+</head>
+<body>
+    <div class="border-pane">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="/img/doctor.png" alt="Doctor Profile" class="profile-image">
+                <h3 class="profile-name">Dr. Barney Stinson</h3>
+            </div>
+            <nav class="navigation">
+                <button class="nav-button" onclick="navigateTo('dashboard')">Dashboard</button>
+                <button class="nav-button active" onclick="navigateTo('prescriptions')">Prescriptions</button>
+                <button class="nav-button" onclick="navigateTo('appointments')">My Appointments</button>
+                <hr class="separator">
+                <button class="nav-button logout" onclick="logout()">Log Out</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1 class="header">PATIENTS</h1>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." class="search-input">
+                <button class="search-button" onclick="searchAppointments()">SEARCH</button>
+            </div>
+
+            <h2 class="sub-header">SEARCH RESULTS FOUND</h2>
+
+            <!-- Patient Cards -->
+            <div class="patient-cards">
+
+                <div class="patient-card">
+                    <img src="/img/patient.png" alt="Patient" class="patient-image">
+                    <h3 class="patient-name">Sameh</h3>
+                    <button class="card-button" onclick="navigateTo('newPrescription')">PRESCRIPTIONS</button>
+                </div>
+                
+                <div class="patient-card">
+                    <img src="/img/patient.png" alt="Patient" class="patient-image">
+                    <h3 class="patient-name">Farah</h3>
+                    <button class="card-button" onclick="navigateTo('newPrescription')">PRESCRIPTIONS</button>
+                </div>
+                <div class="patient-card">
+                    <img src="/img/patient.png" alt="Patient" class="patient-image">
+                    <h3 class="patient-name">Mohamed</h3>
+                    <button class="card-button" onclick="navigateTo('newPrescription')">PRESCRIPTIONS</button>
+                </div>
+            </div>
+
+            <!-- New Prescription Button -->
+            <div class="new-prescription">
+                <button class="new-prescription-button" onclick="navigateTo('newPrescription')">CREATE NEW PRESCRIPTION</button>
+            </div>
+        </main>
+    </div>
+    <script src="/js/doctor.js"></script>
+</body>
+</html>

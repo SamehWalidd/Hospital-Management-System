@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5F7FA;
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #FFFFFF;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profile .username {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+    margin-top: 10px;
+}
+
+.nav-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-buttons button {
+    background-color: transparent;
+    color: #333333;
+    border: none;
+    text-align: left;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.nav-buttons button.active {
+    background-color: #EAF3FF;
+    color: #3076F1;
+}
+
+.nav-buttons button.logout {
+    color: #FF6B5C;
+}
+
+.main-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.appointments-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.tab-buttons button {
+    background-color: transparent;
+    color: #333333;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.tab-buttons button.active {
+    background-color: #EAF3FF;
+    color: #3076F1;
+}
+
+.search-bar, .date-picker {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input, .date-picker input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+}
+
+.search-bar button, .create-button button {
+    background-color: #3076F1;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}

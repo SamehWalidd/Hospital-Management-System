@@ -46,15 +46,6 @@
             <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="SEARCH RESULTS FOUND" />
             <HBox fx:id="prescriptionHbox" alignment="CENTER_LEFT" prefHeight="229.0" prefWidth="740.0" spacing="20">
                 <VBox spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20; -fx-pref-width: 200; -fx-alignment: center;">
-                    <ImageView fx:id="imgView" fitHeight="60" fitWidth="60" preserveRatio="true">
-                        <image>
-                            <Image url="@../../../../img/patient.png" />
-                        </image>
-                    </ImageView>
-                    <Label fx:id="name" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Mohamed" />
-               <Label fx:id="prescription" layoutX="56.0" layoutY="148.0" prefHeight="24.0" prefWidth="110.0" style="-fx-font-size: 13; -fx-text-fill: #333333;" text="Mohamed" textAlignment="CENTER" wrapText="true" />
-                </VBox>
-                <VBox spacing="10" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 20; -fx-pref-width: 200; -fx-alignment: center;">
                     <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
                         <image>
                             <Image url="@../../../../img/patient.png" />
@@ -78,7 +69,7 @@
                             <Image url="@../../../../img/patient.png" />
                         </image>
                     </ImageView>
-                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Ismail" />
+                    <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Mohamed" />
                     <Button style="-fx-background-color: #28A745; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="PRESCRIPTIONS" />
                 </VBox>
             </HBox>

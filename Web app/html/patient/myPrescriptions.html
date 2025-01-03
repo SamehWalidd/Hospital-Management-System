@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Prescriptions</title>
+    <link rel="stylesheet" href="/css/patient/myPrescriptions.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <img src="/img/patient.png" alt="Profile" class="profile-img">
+                <h2 class="profile-name" id="activeUserName">John Doe</h2>
+            </div>
+            <nav class="nav">
+                <button class="nav-button" onclick="dashBoardButton()">My Dashboard</button>
+                <button class="nav-button" onclick="handleViewAppointmentsButton()">My Appointments</button>
+                <button class="nav-button active" onclick="handleViewPrescriptionButton()">My Prescriptions</button>
+                <button class="nav-button" onclick="handleViewBillsButton()">My Bills</button>
+                <hr class="separator">
+                <button class="nav-button logout" onclick="handleLogoutButton()">Log Out</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <h1 class="main-title">PRESCRIPTIONS</h1>
+            <div class="search-section">
+                <input 
+                    type="text" 
+                    id="searchBar" 
+                    class="search-bar" 
+                    placeholder="Search Prescriptions">
+                <button class="search-button" onclick="searchButtonClick()">Search</button>
+            </div>
+            <section class="prescriptions">
+                <!-- Prescription Card -->
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Joao Felix</h3>
+                        <p class="card-text">Prescription for Fever</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="/js/patient.js"></script>
+</body>
+</html>

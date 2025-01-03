@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="/css/Doctor/Dashboard.css">
+</head>
+<body>
+    <div class="border-pane">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <img src="/img/doctor.png" alt="Doctor Profile Picture" class="profile-image">
+                <h2 id="activeUserName">Dr. Barney Stinson</h2>
+            </div>
+            <nav class="nav">
+                <button class="nav-button active">Dashboard</button>
+                <button class="nav-button" onclick="navigateTo('prescriptions')">Prescriptions</button>
+                <button class="nav-button" onclick="navigateTo('appointments')">My Appointments</button>
+                <hr>
+                <button class="nav-button logout" onclick="logout()">Log Out</button>
+            </nav>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <h1>Dashboard</h1>
+            <div class="info-cards">
+                
+                <div class="card">
+                    <h3>NEXT PATIENT</h3>
+                    <div class="next-patient">
+                        <img src="/img/patient.png" alt="Next Patient" class="patient-image">
+                        <div>
+                            <h4 id="nextName">Leo Messi</h4>
+                            <p id="nextDate">18 Dec 2022</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>PENDING APPOINTMENTS</h3>
+                    <p id="pendingField" class="count">2</p>
+                </div>
+
+                <div class="card">
+                    <h3>TOTAL APPOINTMENTS</h3>
+                    <p id="totalAppField" class="count">2</p>
+                </div>
+            </div>
+
+            <!-- Recent Patients Section -->
+            <div class="recent-patients">
+                <h3>RECENT PATIENTS</h3>
+                <div class="recent-patient">
+                    <img src="/img/patient.png" alt="Recent Patient" class="patient-image">
+                    <div>
+                        <h4 id="recentName">Leo Messi</h4>
+                        <p id="recentDate">18 December 2022</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/doctor.js"></script>
+</body>
+</html>

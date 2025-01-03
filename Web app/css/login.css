@@ -1,0 +1,96 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #E5F0FF;
+}
+
+/* BorderPane Style */
+.border-pane {
+    display: flex;
+    height: 100vh;
+}
+
+/* Shared Left Section */
+.left-section {
+    flex: 1;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-image {
+    width:100%;
+}
+
+/* Shared Right Section */
+.right-section {
+    flex: 1;
+    background-color: #f4f5f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+/* Logo Style */
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+/* Shared Text Field Style */
+.text-field {
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #E0E0E0;
+    margin-bottom: 20px;
+}
+
+/* Shared Error Message */
+.error-message {
+    font-size: 14px;
+    color: #FF6B5C;
+    visibility: hidden;
+    margin-bottom: 20px;
+}
+
+/* Shared Button Style */
+.button {
+    width: 300px;
+    height: 40px;
+    background: linear-gradient(to right, #3076F1, #45A7F5);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.button:hover {
+    background: linear-gradient(to right, #45A7F5, #3076F1);
+}
+
+/* Shared Link Style */
+.link {
+    color: #3076F1;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Specific Styles for Signup */
+.signup-section .button {
+    background: linear-gradient(to right, #28A745, #58D68D);
+}
+
+.signup-section .button:hover {
+    background: linear-gradient(to right, #58D68D, #28A745);
+}

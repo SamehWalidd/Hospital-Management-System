@@ -23,12 +23,12 @@
             <VBox alignment="CENTER_LEFT" spacing="10">
                 <Button style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Dashboard" />
                 <Button style="-fx-background-color: #EAF3FF; -fx-text-fill: #3076F1; -fx-pref-width: 200;" text="My Appointments" />
-                <Button layoutX="10.0" layoutY="46.0" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Prescriptions" />
-                <Button style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Bills" />
+                <Button layoutX="10.0" layoutY="46.0" onAction="#handleViewPrescriptionButton" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Prescriptions" />
+                <Button onAction="#handleViewBillsButton" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-pref-width: 200;" text="My Bills" />
 
                 <!-- Tools Section -->
                 <Separator />
-                <Button style="-fx-background-color: transparent; -fx-text-fill: #FF6B5C; -fx-pref-width: 200;" text="Log Out" />
+                <Button onAction="#handleLogoutButton" style="-fx-background-color: transparent; -fx-text-fill: #FF6B5C; -fx-pref-width: 200;" text="Log Out" />
             </VBox>
         </VBox>
     </left>
@@ -53,7 +53,11 @@
             <Button onAction="#handleSearchButton" style="-fx-background-color: #3076F1; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="SEARCH" />
         </HBox>
             <DatePicker fx:id="datePicker" prefWidth="260.0" promptText="Select Date" style="-fx-pref-height: 40;" />
-         <HBox fx:id="AppointmentsHbox" prefHeight="252.0" prefWidth="740.0" />
+         <HBox fx:id="Appointmentsbox" prefHeight="252.0" prefWidth="740.0" />
+
+            <HBox alignment="CENTER" spacing="10" HBox.hgrow="ALWAYS">
+                <Button maxWidth="Infinity" prefHeight="26.0" prefWidth="655.0" style="-fx-background-color: #3076F1; -fx-text-fill: #FFFFFF; -fx-background-radius: 5;" text="Create Appointment" />
+            </HBox>
         </VBox>
     </center>
 

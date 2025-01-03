@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Prescription</title>
+    <link rel="stylesheet" href="/css/Doctor/newPrescription.css">
+</head>
+<body>
+    <div class="border-pane">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="/img/doctor.png" alt="Doctor Profile" class="profile-image">
+                <h3 class="profile-name">Dr. Barney Stinson</h3>
+            </div>
+            <nav class="navigation">
+                <button class="nav-button" onclick="navigateTo('dashboard')">Dashboard</button>
+                <button class="nav-button active" onclick="navigateTo('prescriptions')">Prescriptions</button>
+                <button class="nav-button" onclick="navigateTo('appointments')">My Appointments</button>
+                <hr class="separator">
+                <button class="nav-button logout" onclick="logout()">Log Out</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1 class="header">CREATE PRESCRIPTION</h1>
+
+            <!-- Patient ID -->
+            <div class="form-group">
+                <label for="patient-id" class="form-label">Patient ID:</label>
+                <input type="text" id="patient-id" class="form-input" placeholder="Enter Patient ID">
+            </div>
+
+            <!-- Prescription Details -->
+            <div class="form-group">
+                <label for="prescription-details" class="form-label">Prescription Details:</label>
+                <textarea id="prescription-details" class="form-textarea" placeholder="Enter Prescription Details"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button class="submit-button">SUBMIT PRESCRIPTION</button>
+            </div>
+        </main>
+    </div>
+    <script src="/js/doctor.js"></script>
+</body>
+</html>

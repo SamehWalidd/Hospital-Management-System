@@ -57,6 +57,7 @@ public class Appointment {
         }
     }
 
+
     public void addAppointmentToDatabase() {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             String query = "INSERT INTO Appointment (doctor_id, patient_id, date_time) VALUES (?, ?, ?)";

@@ -3,16 +3,12 @@ import base.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,7 +22,7 @@ public class CreateAppointment {
     @FXML
     private Label activeUserName;
     @FXML private TextField searchBar;
-    @FXML private GridPane AppointmentsHbox;
+    @FXML private HBox Appointmentsbox;
     @FXML private DatePicker datePicker;
 
     public void initialize() {
@@ -58,9 +54,9 @@ public class CreateAppointment {
 
     @FXML
     public void handleViewPrescriptionButton(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/gui_v1/Patient/MyPrescription.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/gui_v1/Patient/MyPrescriptions.fxml")));
         Scene scene = new Scene(root, 1000, 500);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
     }
@@ -93,7 +89,31 @@ public class CreateAppointment {
     private void LoadDoctors() {
         Hospital hospital = Hospital.getInstance();
         ArrayList<Doctor> doctors = hospital.getDoctors();
-        AppointmentsHbox.getChildren().clear();
+        Appointmentsbox.getChildren().clear();
+        for (Doctor doctor : doctors){
+            GridPane gridPane = new GridPane();
+            gridPane.getStyleClass().add("doctor-grid");
+            gridPane.setHgap(10);
+            gridPane.setVgap(10);
+
+            Label name = new Label(doctor.getName());
+            Label specialization = new Label(doctor.getSpecialty());
+            Button bookButton = new Button("Book Appointment");
+            bookButton.setOnAction(e -> {
+                try {
+                    hospital.scheduleAppointment(patient, doctor, datePicker.getValue());
+                    LoadDoctors();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+            });
+
+            gridPane.add(name, 0, 0);
+            gridPane.add(specialization, 1, 0);
+            gridPane.add(bookButton, 2, 0);
+
+            Appointmentsbox.getChildren().add(gridPane);
+        }
     }
 
     public void handleSearchButton(ActionEvent event) throws IOException {
@@ -104,8 +124,34 @@ public class CreateAppointment {
         } else {
             Hospital hospital = Hospital.getInstance();
             ArrayList<Doctor> doctors = hospital.getDoctors();
-            AppointmentsHbox.getChildren().clear();
+            Appointmentsbox.getChildren().clear();
 
+            for (Doctor doctor : doctors) {
+                if (doctor.getName().toLowerCase().contains(search.toLowerCase())) {
+                    GridPane gridPane = new GridPane();
+                    gridPane.getStyleClass().add("doctor-grid");
+                    gridPane.setHgap(10);
+                    gridPane.setVgap(10);
+
+                    Label name = new Label(doctor.getName());
+                    Label specialization = new Label(doctor.getSpecialty());
+                    Button bookButton = new Button("Book Appointment");
+                    bookButton.setOnAction(e -> {
+                        try {
+                            hospital.scheduleAppointment(patient, doctor, datePicker.getValue());
+                            LoadDoctors();
+                        } catch (Exception exception) {
+                            exception.printStackTrace();
+                        }
+                    });
+
+                    gridPane.add(name, 0, 0);
+                    gridPane.add(specialization, 1, 0);
+                    gridPane.add(bookButton, 2, 0);
+
+                    Appointmentsbox.getChildren().add(gridPane);
+                }
+            }
         }
     }
 }

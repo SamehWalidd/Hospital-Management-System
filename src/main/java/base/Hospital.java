@@ -1,6 +1,7 @@
 package base;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Hospital {
@@ -118,5 +119,10 @@ public class Hospital {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void scheduleAppointment(Patient patient, Doctor doctor, LocalDate value) {
+        Appointment appointment = new Appointment(doctor, patient, value.atStartOfDay());
+        scheduleAppointment(appointment);
     }
 }

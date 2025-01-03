@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments</title>
+    <link rel="stylesheet" href="/css/Doctor/appointments.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="/img/doctor.png" alt="Doctor Profile" class="profile-img">
+                <h3 id="activeUserName">Dr. Barney Stinson</h3>
+            </div>
+            <nav class="nav">
+                <button onclick="navigateTo('dashboard')" class="nav-button">Dashboard</button>
+                <button onclick="navigateTo('prescriptions')" class="nav-button">Prescriptions</button>
+                <button class="nav-button active">Appointments</button>
+                <hr>
+                <button onclick="logout()" class="nav-button logout">Log Out</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <h1>Appointments</h1>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" id="searchbar" placeholder="Enter Patient Name or ID">
+                <button id="searchButton" onclick="searchAppointments()">SEARCH</button>
+            </div>
+
+            <h2>Upcoming Appointments</h2>
+            <div id="upcomingVbox" class="appointments-list">
+                <!-- Appointment Card 1 -->
+                <div class="appointment-card">
+                    <img src="/img/patient.png" alt="Patient Profile" class="appointment-img">
+                    <div class="appointment-info">
+                        <h3>Joao Felix</h3>
+                        <p>02 April 2021 | 11:30 AM - 12:00 PM</p>
+                    </div>
+                    <button class="cancel-button" onclick="cancelAppointment(event)">Cancel</button>
+                </div>
+                <!-- Appointment Card 2 -->
+                <div class="appointment-card">
+                    <img src="/img/patient.png" alt="Patient Profile" class="appointment-img">
+                    <div class="appointment-info">
+                        <h3>Joao Felix</h3>
+                        <p>02 April 2021 | 11:30 AM - 12:00 PM</p>
+                    </div>
+                    <button class="cancel-button" onclick="cancelAppointment(event)">Cancel</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/js/doctor.js"></script>
+</body>
+</html>

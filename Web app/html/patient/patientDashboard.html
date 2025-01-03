@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard</title>
+    <link rel="stylesheet" href="/css/patient/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="/img/patient.png" alt="Patient Profile" class="profile-image">
+                <h3 class="profile-name">Leo Messi</h3>
+            </div>
+            <nav class="navigation">
+                <button class="nav-button active" onclick="dashBoardButton()">My Dashboard</button>
+                <button class="nav-button" onclick="handleViewAppointmentsButton()">My Appointments</button>
+                <button class="nav-button" onclick="handleViewPrescriptionButton()">My Prescriptions</button>
+                <button class="nav-button" onclick="handleViewBillsButton()">My Bills</button>
+                <hr class="separator">
+                <button class="nav-button logout" onclick="handleLogoutButton()">Log Out</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1 class="header">My Dashboard</h1>
+
+            <!-- Info Cards -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3 class="info-title">NEXT APPOINTMENT</h3>
+                    <div class="info-details">
+                        <img src="/img/doctor.png" alt="Doctor" class="info-image">
+                        <div class="info-text">
+                            <p class="info-name">Dr. Barney Stinson</p>
+                            <p class="info-date">25 Dec 2024, 10:00 AM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-title">TOTAL INVOICE</h3>
+                    <p class="info-value">$200</p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-title">TOTAL APPOINTMENTS</h3>
+                    <p class="info-value">15</p>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="recent-activity">
+                <h3 class="activity-title">RECENT ACTIVITY</h3>
+                <div class="activity-item">
+                    <img src="/img/doctor.png" alt="Doctor" class="activity-image">
+                    <div class="activity-text">
+                        <p class="activity-name">Follow-up with Dr. Barney Stinson</p>
+                        <p class="activity-date">Completed on 20 Dec 2024</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/js/patient.js"></script>
+</body>
+</html>
