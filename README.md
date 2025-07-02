@@ -1,4 +1,3 @@
-Sure! Here's the improved README with a **Collaborators** section added at the end to mention Farah and Mohamed:
 
 ---
 
